@@ -37,7 +37,7 @@
     "@types/node": "^18.0.0",
     "unbuild": "^0.9.4",
     "vite": "^3.2.2",
-    "vitest": "^0.24.4"
+    "vitest": "^0.24.5"
   },
   "engines": {
     "node": ">=v16.16.0"
