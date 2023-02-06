@@ -29,14 +29,12 @@
   ],
   "scripts": {
     "build": "unbuild",
+    "format": "prettier --write src/**/*.ts test/**/*.ts",
     "test": "vitest",
     "test:ci": "vitest --run",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/node": "^18.0.0",
-    "unbuild": "^1.1.1",
-    "vite": "^4.1.1",
     "vitest": "^0.28.4"
   },
   "engines": {
