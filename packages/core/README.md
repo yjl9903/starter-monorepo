@@ -1,5 +1,5 @@
-# [repo]/core
+# [repo]
 
 ## License
 
-MIT License © 2021 [[name]](https://github.com/[author])
+MIT License © 2023 [[name]](https://github.com/[author])
