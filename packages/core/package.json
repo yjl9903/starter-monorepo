@@ -35,7 +35,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "vitest": "^0.29.3"
+    "vitest": "^0.29.7"
   },
   "engines": {
     "node": ">=v18.14.2"
