@@ -34,7 +34,7 @@ jobs:
 
       - name: Update repo info
         run: |
-          YEAR="${date +%Y}"
+          YEAR="$(date +'%Y')"
           REPO="${GITHUB_REPOSITORY##*/}"
           ACTOR=$(echo $GITHUB_ACTOR | tr '[:upper:]' '[:lower:]')
           USERNAME="${{ steps.gh.outputs.result }}"
