@@ -1,0 +1,33 @@
+name: Template Cleanup
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # Run a cleaning process only if the workflow is triggered by the non-"starter-monorepo" repository.
+  template-cleanup:
+    name: Template Cleanup
+    
+    runs-on: ubuntu-latest
+    
+    if: github.repository != 'yjl9903/starter-monorepo'
+    
+    permissions:
+      contents: write
+      
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Clean data
+        run: |
+          rm .github/workflows/cleanup.yml
+      
+      - name: Commit and push
+        run: |
+          git add .
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git commit -m "chore: cleanup old data"
+          git push

@@ -34,10 +34,7 @@
     "test:ci": "vitest --run",
     "typecheck": "tsc --noEmit"
   },
-  "devDependencies": {
-    "vitest": "^1.0.4"
-  },
   "engines": {
-    "node": ">=v18.16.0"
+    "node": ">=v20.10.0"
   }
 }
