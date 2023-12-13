@@ -30,6 +30,7 @@ jobs:
             const user = await github.rest.users.getByUsername({
               username: GITHUB_ACTOR
             })
+            console.log(GITHUB_ACTOR, user)
             return user.name
 
       - name: Update repo info
