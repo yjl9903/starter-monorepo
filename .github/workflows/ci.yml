@@ -25,7 +25,8 @@ jobs:
             const user = await github.rest.users.getByUsername({
               username: GITHUB_ACTOR
             })
-            core.exportVariable('username', user.name);
+            console.log(user, user.name)
+            core.exportVariable('username', user.name)
 
       - name: Get name
         run: |
