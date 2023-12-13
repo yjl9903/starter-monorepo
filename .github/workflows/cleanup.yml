@@ -34,6 +34,7 @@ jobs:
 
       - name: Update repo info
         run: |
+          YEAR="${date +%Y}"
           REPO="${GITHUB_REPOSITORY##*/}"
           ACTOR=$(echo $GITHUB_ACTOR | tr '[:upper:]' '[:lower:]')
           USERNAME="${{ steps.gh.outputs.result }}"
@@ -44,7 +45,7 @@ jobs:
           find . -name "package.json" -not -path "./node_modules/*" -exec sed -i "s/\[actor\]/$ACTOR/g" {} +
           find . -name "package.json" -not -path "./node_modules/*" -exec sed -i "s/\[username\]/$USERNAME/g" {} +
 
-          sed -i "s/\[year\]/${date +%Y}/g" ./.github/template/*
+          sed -i "s/\[year\]/$YEAR/g" ./.github/template/*
           sed -i "s/\[repo\]/$REPO/g" ./.github/template/*
           sed -i "s/\[actor\]/$ACTOR/g" ./.github/template/*
           sed -i "s/\[username\]/$USERNAME/g" ./.github/template/*
