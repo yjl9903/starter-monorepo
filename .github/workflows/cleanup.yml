@@ -28,9 +28,9 @@ jobs:
           SAFE_REPO=$(echo $REPO | sed 's/[^a-zA-Z0-9\-_.]//g' | tr '[:upper:]' '[:lower:]')
           SAFE_ACTOR=$(echo $ACTOR | sed 's/[^a-zA-Z0-9]//g' | tr '[:upper:]' '[:lower:]')
 
-          sed -i "s/[repo]/$REPO/g" ./**/package.json
-          sed -i "s/[author]/$ACTOR/g" ./**/package.json
-          sed -i "s/[username]/$USERNAME/g" ./**/package.json
+          find . -name "package.json" -not -path "./node_modules/*" -exec sed -i "s/[repo]/$REPO/g" {} +
+          find . -name "package.json" -not -path "./node_modules/*" -exec sed -i "s/[author]/$ACTOR/g" {} +
+          find . -name "package.json" -not -path "./node_modules/*" -exec sed -i "s/[username]/$USERNAME/g" {} +
 
           sed -i "s/[repo]/$REPO/g" ./.github/template/*
           sed -i "s/[author]/$ACTOR/g" ./.github/template/*
