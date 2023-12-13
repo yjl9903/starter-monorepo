@@ -25,12 +25,12 @@ jobs:
             const user = await github.rest.users.getByUsername({
               username: GITHUB_ACTOR
             })
-            console.log(user, user.name)
-            core.exportVariable('username', user.name)
+            console.log(user, user.data.name)
+            return user.data.name
 
       - name: Get name
         run: |
-          echo "${{ steps.gh.outputs.username }}"
+          echo "${{ steps.gh.outputs.result }}"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.4.0
