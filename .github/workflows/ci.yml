@@ -15,6 +15,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Get GitHub username
+        uses: actions/github-script@v7
+        id: gh
+        with:
+          result-encoding: string
+          script: |
+            const { GITHUB_ACTOR } = process.env
+            const user = await github.rest.users.getByUsername({
+              username: GITHUB_ACTOR
+            })
+            return user.name
+
+      - name: Get name
+        run: |
+          echo "${{ steps.gh.outputs }}"
+          echo "${{ steps.gh.outputs.result }}"
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.4.0
 
