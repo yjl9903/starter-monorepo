@@ -1,4 +1,4 @@
-name: Template Cleanup
+name: Cleanup Template
 
 on:
   push:
@@ -7,27 +7,60 @@ on:
 
 jobs:
   # Run a cleaning process only if the workflow is triggered by the non-"starter-monorepo" repository.
-  template-cleanup:
-    name: Template Cleanup
-    
+  cleanup-template:
+    name: Cleanup Template
+
     runs-on: ubuntu-latest
-    
+
     if: github.repository != 'yjl9903/starter-monorepo'
-    
+
     permissions:
       contents: write
-      
+
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Clean data
+
+      - name: Update repo info
         run: |
+          REPO="${GITHUB_REPOSITORY##*/}"
+          ACTOR=$(echo $GITHUB_ACTOR | tr '[:upper:]' '[:lower:]')
+          USERNAME="${{ github.event.head_commit.author.username }}"
+          SAFE_REPO=$(echo $REPO | sed 's/[^a-zA-Z0-9\-_.]//g' | tr '[:upper:]' '[:lower:]')
+          SAFE_ACTOR=$(echo $ACTOR | sed 's/[^a-zA-Z0-9]//g' | tr '[:upper:]' '[:lower:]')
+
+          sed -i "s/[repo]/$REPO/g" ./**/package.json
+          sed -i "s/[author]/$ACTOR/g" ./**/package.json
+          sed -i "s/[username]/$USERNAME/g" ./**/package.json
+
+          sed -i "s/[repo]/$REPO/g" ./.github/template/*
+          sed -i "s/[author]/$ACTOR/g" ./.github/template/*
+          sed -i "s/[username]/$USERNAME/g" ./.github/template/*
+
+          cp .github/template/LICENSE LICENSE
+          cp .github/template/README.md README.md
+          cp .github/template/README.md packages/core/README.md
+
+          mv packages/core packages/$SAFE_REPO
+
           rm .github/workflows/cleanup.yml
-      
+          rm -rf .github/template
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install
+
       - name: Commit and push
         run: |
-          git add .
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
           git commit -m "chore: cleanup old data"
           git push

@@ -3,16 +3,16 @@
   "version": "0.0.0",
   "description": "",
   "keywords": [],
-  "homepage": "https://github.com/[author]/[repo]#readme",
+  "homepage": "https://github.com/[actor]/[repo]#readme",
   "bugs": {
-    "url": "https://github.com/[author]/[repo]/issues"
+    "url": "https://github.com/[actor]/[repo]/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/[author]/[repo].git"
+    "url": "git+https://github.com/[actor]/[repo].git"
   },
   "license": "MIT",
-  "author": "[name]",
+  "author": "[username]",
   "sideEffects": false,
   "exports": {
     ".": {

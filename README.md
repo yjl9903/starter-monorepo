@@ -1,7 +1,7 @@
 # [repo]
 
-After cloning this starter template, do not forget replacing `[author]`, `[name]`, and `[repo]` globally.
+After cloning this starter template, do not forget replacing `[actor]`, `[username]`, and `[repo]` globally.
 
 ## License
 
-MIT License © 2023 [[name]](https://github.com/[author])
+MIT License © 2023 [[username]](https://github.com/[actor])
