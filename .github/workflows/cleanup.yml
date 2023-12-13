@@ -29,11 +29,11 @@ jobs:
           SAFE_ACTOR=$(echo $ACTOR | sed 's/[^a-zA-Z0-9]//g' | tr '[:upper:]' '[:lower:]')
 
           find . -name "package.json" -not -path "./node_modules/*" -exec sed -i "s/\[repo\]/$REPO/g" {} +
-          find . -name "package.json" -not -path "./node_modules/*" -exec sed -i "s/\[author\]/$ACTOR/g" {} +
+          find . -name "package.json" -not -path "./node_modules/*" -exec sed -i "s/\[actor\]/$ACTOR/g" {} +
           find . -name "package.json" -not -path "./node_modules/*" -exec sed -i "s/\[username\]/$USERNAME/g" {} +
 
           sed -i "s/\[repo\]/$REPO/g" ./.github/template/*
-          sed -i "s/\[author\]/$ACTOR/g" ./.github/template/*
+          sed -i "s/\[actor\]/$ACTOR/g" ./.github/template/*
           sed -i "s/\[username\]/$USERNAME/g" ./.github/template/*
 
           cp .github/template/LICENSE LICENSE
