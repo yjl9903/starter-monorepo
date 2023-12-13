@@ -4,4 +4,4 @@
 
 ## License
 
-MIT License © 2023 [[username]](https://github.com/[actor])
+MIT License © [year] [[username]](https://github.com/[actor])
