@@ -1,4 +1,4 @@
-# [repo]
+# starter-monorepo
 
 ## Get started
 
@@ -12,4 +12,4 @@ After using the template to create your blank project, the [Cleanup Template wor
 
 ## License
 
-MIT License © 2023 [[username]](https://github.com/[actor])
+MIT License © 2023 [XLor](https://github.com/yjl9903)
