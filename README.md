@@ -12,4 +12,4 @@ After using the template to create your blank project, the [Cleanup Template wor
 
 ## License
 
-MIT License © 2023 [XLor](https://github.com/yjl9903)
+MIT License © 2024 [XLor](https://github.com/yjl9903)
