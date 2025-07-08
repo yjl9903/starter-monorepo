@@ -29,7 +29,7 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "format": "prettier --write src/**/*.ts test/**/*.ts",
+    "format": "prettier --write './**/*.{mjs,ts}'",
     "test": "vitest",
     "test:ci": "vitest --run",
     "typecheck": "tsc --noEmit"
