@@ -16,7 +16,7 @@
   "devDependencies": {
     "@types/node": "^24.10.1",
     "bumpp": "latest",
-    "prettier": "^3.7.3",
+    "prettier": "^3.7.4",
     "tsdown": "^0.16.8",
     "tsx": "^4.21.0",
     "turbo": "^2.6.1",
