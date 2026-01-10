@@ -14,7 +14,7 @@
     "postversion": "turbo run build"
   },
   "devDependencies": {
-    "@types/node": "^24.10.4",
+    "@types/node": "^24.10.6",
     "bumpp": "latest",
     "prettier": "^3.7.4",
     "tsdown": "^0.18.4",
