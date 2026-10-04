@@ -68,8 +68,16 @@ jobs:
           node-version: 26.10.0
           cache: pnpm
 
-      - name: Install
-        run: pnpm install
+      - name: Install and refresh lockfile
+        # Renaming the workspace package changes its lockfile importer path.
+        run: pnpm install --no-frozen-lockfile
+
+      # The cleanup commit pushed with GITHUB_TOKEN will not trigger push CI.
+      - name: Build
+        run: pnpm build
+
+      - name: Test
+        run: pnpm test:ci
 
       - name: Commit and push
         run: |
