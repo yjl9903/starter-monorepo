@@ -17,14 +17,16 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6.1.1
+      - name: Set up Node.js and pnpm
+        uses: jdx/mise-action@v5
 
-      - name: Setup node
+      - name: Cache pnpm store
         uses: actions/setup-node@v7
         with:
-          node-version: 26.13.1
           cache: pnpm
+          cache-dependency-path: |
+            mise.toml
+            pnpm-lock.yaml
 
       - name: Install
         run: pnpm install --frozen-lockfile

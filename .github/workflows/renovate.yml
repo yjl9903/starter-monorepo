@@ -38,14 +38,11 @@ jobs:
           ref: deps
           fetch-depth: 0
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6.1.1
-
-      - name: Setup node
-        uses: actions/setup-node@v7
+      - name: Set up mise
+        uses: jdx/mise-action@v5
         with:
-          node-version: 26.13.1
-          cache: pnpm
+          install: false
+          cache: false
 
       - name: Rebase deps and refresh the lockfile
         shell: bash
@@ -110,8 +107,8 @@ jobs:
               rebase_with_main_winning
             fi
 
-            # CI defaults to a frozen lockfile, so explicitly allow regeneration.
-            pnpm install --no-frozen-lockfile
+            # Read tool versions from the rebased checkout, including on retries.
+            mise exec -- pnpm install --no-frozen-lockfile
 
             if ! git diff --quiet -- . ':(exclude)pnpm-lock.yaml'; then
               echo "::error::pnpm install changed files other than pnpm-lock.yaml."
